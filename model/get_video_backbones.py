@@ -6,7 +6,8 @@ from backbones.video_swin_transformer import SwinTransformer3D
 from backbones.uniformer import Uniformer
 from backbones.MorphMLP import MorphMLP_32_features_only
 
-_MOTION_ENCODERS = ('mvitv2s','s3d', 'slowfast4x16', 'morphmlps', 'uniformerb', 'videoswins', 'x3dl')
+# _MOTION_ENCODERS = ('mvitv2s','s3d', 'slowfast4x16', 'morphmlps', 'uniformerb', 'videoswins', 'x3dl')
+_MOTION_ENCODERS = ('mvitv2s')
 
 def video_motion_extractor(cfg):
     motion_encoder = None

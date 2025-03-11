@@ -97,8 +97,11 @@ def inference_dataset(model, args):
     # Select dataset
     if args.dataset == 'DIEM':
         file_name = 'DIEM_list_test_fps.txt'
+    elif args.dataset == 'ETMD':
+        file_name = '{}_av_list_test_{}_fps.txt'.format(args.dataset, args.split)
     else:
-        file_name = '{}_list_test_{}_fps.txt'.format(args.dataset, args.split)
+        # file_name = '{}_list_test_{}_fps.txt'.format(args.dataset, args.split)
+        file_name= '/code/Datasets/alireza_projects/video_saliency/MSPI/folds/Coutrot_db1_list_test_2_fps.txt'
 
     list_data = []
     videos_fps = {}
@@ -167,12 +170,12 @@ def torch_transform(path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--weight',
-                        default="./output/mvitv2_small_224_384_16_s2.pt",
+                        default="./mvitv2_small_224_384_16_s2.pt",
                         type=str)
-    parser.add_argument('--save_path', default='./output', type=str)
+    parser.add_argument('--save_path', default='./output_Coutrot_db1', type=str)
     parser.add_argument('--split', default=2, type=int)
-    parser.add_argument('--path_data', default='./AuViDataset', type=str)
-    parser.add_argument('--dataset', default='AVAD', type=str)
+    parser.add_argument('--path_data', default='/code/Datasets/alireza_projects/video_saliency/TMFI-Net/audio_visual/1_final_ AV/data', type=str)
+    parser.add_argument('--dataset', default='Coutrot_db1', type=str)
     parser.add_argument('--clip_size', default=16, type=int)
     parser.add_argument('--use_sound', default=True, type=bool)
 
@@ -184,6 +187,7 @@ if __name__ == "__main__":
 
     model = SalModel(cfg=cfg)
     model.load_state_dict(torch.load(args.weight), strict=False)
+    print(model)
 
     model = model.to(device)
     torch.backends.cudnn.benchmark = True
