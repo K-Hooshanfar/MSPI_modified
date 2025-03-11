@@ -34,7 +34,10 @@ If you use the PySlowFast codes in this repository, partial model codes' connect
 timm==0.6.12
 torch==1.11.0
 ```
-
+```
+ cd pytorchvideo
+pip install -e .
+```
 ## Training
 
 The dataset directory structure should be 
